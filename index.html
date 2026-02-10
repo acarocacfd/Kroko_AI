@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanjo AI | AI Engineering & Consulting Excellence</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>ERENIA | AI Engineering & Innovation Lab</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #0a0e14;
-      --color-bg-light: #1a1f2e;
-      --color-bg-card: #141b26;
-      --color-primary: #00d4ff;
-      --color-secondary: #4c7cf0;
-      --color-accent: #00ffa3;
-      --color-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --color-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --color-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --color-gradient-4: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --color-text-light: #ffffff;
-      --color-text-muted: #8892b0;
-      --color-text-dark: #ccd6f6;
-      --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
-      --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.4);
-      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --color-bg: #000000;
+      --color-bg-elevated: #0a0a0a;
+      --color-bg-card: #111111;
+      --color-primary: #00ffaa;
+      --color-secondary: #0099ff;
+      --color-accent: #ff00ff;
+      --color-gradient-primary: linear-gradient(135deg, #00ffaa 0%, #00ccff 100%);
+      --color-gradient-secondary: linear-gradient(135deg, #ff00ff 0%, #0099ff 100%);
+      --color-gradient-mesh: radial-gradient(at 0% 0%, rgba(0, 255, 170, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 100% 0%, rgba(0, 153, 255, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 100% 100%, rgba(255, 0, 255, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 0% 100%, rgba(0, 255, 170, 0.15) 0px, transparent 50%);
+      --color-text: #ffffff;
+      --color-text-muted: #a0a0a0;
+      --shadow-glow-primary: 0 0 60px rgba(0, 255, 170, 0.4);
+      --shadow-glow-secondary: 0 0 60px rgba(0, 153, 255, 0.4);
+      --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.6);
+      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-gradient: linear-gradient(135deg, rgba(0, 255, 170, 0.3) 0%, rgba(0, 153, 255, 0.3) 100%);
     }
 
     * {
@@ -33,14 +36,15 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--color-bg);
-      color: var(--color-text-dark);
+      color: var(--color-text);
       line-height: 1.7;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Animated Background */
+    /* Animated Mesh Background */
     body::before {
       content: '';
       position: fixed;
@@ -48,17 +52,41 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(76, 124, 240, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(0, 255, 163, 0.1) 0%, transparent 50%);
-      z-index: -1;
-      animation: float 20s ease-in-out infinite;
+      background: var(--color-gradient-mesh);
+      z-index: -2;
+      animation: meshMove 30s ease-in-out infinite;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(1deg); }
+    @keyframes meshMove {
+      0%, 100% { 
+        background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%;
+        opacity: 0.6;
+      }
+      50% { 
+        background-position: 100% 100%, 0% 100%, 0% 0%, 100% 0%;
+        opacity: 0.8;
+      }
+    }
+
+    /* Grid Pattern */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 170, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 170, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+      animation: gridScroll 20s linear infinite;
+    }
+
+    @keyframes gridScroll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(50px); }
     }
 
     /* Navigation */
@@ -66,67 +94,72 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 14, 20, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(0, 255, 170, 0.1);
       z-index: 1000;
       transition: var(--transition);
     }
 
+    nav.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom-color: rgba(0, 255, 170, 0.2);
+    }
+
     .nav-container {
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 1.25rem 3rem;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
       gap: 1rem;
+      cursor: pointer;
     }
 
-    .logo-placeholder {
-      width: 50px;
-      height: 50px;
-      background: var(--color-gradient-3);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: white;
-      font-size: 1.2rem;
-      box-shadow: var(--shadow-glow);
-      animation: pulse 2s infinite;
+    .logo-image {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 170, 0.6));
+      transition: var(--transition);
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .logo-container:hover .logo-image {
+      filter: drop-shadow(0 0 30px rgba(0, 255, 170, 0.9));
+      transform: scale(1.05);
     }
 
     .logo-text {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      background: var(--color-gradient-3);
+      letter-spacing: 0.05em;
+      background: var(--color-gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2.5rem;
+      gap: 3rem;
+      align-items: center;
     }
 
     .nav-links a {
       color: var(--color-text-muted);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       transition: var(--transition);
       position: relative;
     }
@@ -134,11 +167,12 @@
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 0;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0;
       height: 2px;
-      background: var(--color-primary);
+      background: var(--color-gradient-primary);
       transition: var(--transition);
     }
 
@@ -159,43 +193,61 @@
       text-align: center;
       padding: 2rem;
       position: relative;
+      overflow: hidden;
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 1100px;
       z-index: 2;
+      position: relative;
     }
 
     .hero-badge {
-      display: inline-block;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(0, 255, 170, 0.1);
+      border: 1px solid rgba(0, 255, 170, 0.3);
       color: var(--color-primary);
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
       font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 2rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
       backdrop-filter: blur(10px);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.2);
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #00ffa3 100%);
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #00ffaa 30%, #00ccff 70%, #00ffaa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1.2;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      animation: gradientShift 8s ease infinite;
+      background-size: 200% auto;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
     }
 
     .hero-subtitle {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--color-text-muted);
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
       font-weight: 400;
-      text-align: justify;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .cta-buttons {
@@ -206,9 +258,9 @@
     }
 
     .btn {
-      padding: 1rem 2rem;
+      padding: 1.25rem 2.5rem;
       border: none;
-      border-radius: 12px;
+      border-radius: 100px;
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
@@ -216,88 +268,115 @@
       font-size: 1rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary {
-      background: var(--color-gradient-3);
-      color: white;
-      box-shadow: var(--shadow-glow);
+      background: var(--color-gradient-primary);
+      color: var(--color-bg);
+      box-shadow: var(--shadow-glow-primary);
+      font-weight: 700;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 0 80px rgba(0, 255, 170, 0.6);
     }
 
     .btn-secondary {
       background: transparent;
-      color: var(--color-text-light);
+      color: var(--color-text);
       border: 2px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       border-color: var(--color-primary);
       color: var(--color-primary);
+      transform: translateY(-3px);
     }
 
     /* Sections */
     section {
-      padding: 6rem 2rem;
-      max-width: 1400px;
+      padding: 8rem 2rem;
+      max-width: 1600px;
       margin: 0 auto;
+      position: relative;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .section-badge {
-      display: inline-block;
-      background: rgba(76, 124, 240, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 153, 255, 0.1);
+      border: 1px solid rgba(0, 153, 255, 0.3);
       color: var(--color-secondary);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--color-text-light);
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
     }
 
     .section-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: var(--color-text-muted);
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
-      text-align: justify;
+      line-height: 1.6;
     }
 
     /* Services Grid */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
     }
 
     .service-card {
       background: var(--color-bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 3rem;
       transition: var(--transition);
       position: relative;
       overflow: hidden;
-      text-align: center;
     }
 
     .service-card::before {
@@ -306,9 +385,21 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: var(--color-gradient-3);
+      height: 1px;
+      background: var(--color-gradient-primary);
       transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(0, 255, 170, 0.05) 0%, transparent 50%);
+      opacity: 0;
       transition: var(--transition);
     }
 
@@ -316,51 +407,58 @@
       transform: scaleX(1);
     }
 
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-card);
-      border-color: rgba(0, 212, 255, 0.3);
+      border-color: rgba(0, 255, 170, 0.2);
     }
 
     .service-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--color-gradient);
-      border-radius: 15px;
+      width: 70px;
+      height: 70px;
+      background: var(--color-gradient-primary);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem auto;
-      font-size: 1.5rem;
-      color: white;
+      margin-bottom: 2rem;
+      font-size: 1.75rem;
+      color: var(--color-bg);
+      box-shadow: 0 10px 30px rgba(0, 255, 170, 0.3);
     }
 
     .service-card h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--color-text-light);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
     }
 
     .service-card p {
       color: var(--color-text-muted);
-      line-height: 1.6;
-      text-align: justify;
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
 
     /* Success Cases */
     .cases-container {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
-      margin-top: 3rem;
+      gap: 5rem;
+      margin-top: 4rem;
     }
 
     .case-item {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: center;
+      position: relative;
     }
 
     .case-item:nth-child(even) {
@@ -377,61 +475,98 @@
 
     .case-tech-badge {
       display: inline-block;
-      background: rgba(0, 255, 163, 0.1);
+      background: rgba(255, 0, 255, 0.1);
+      border: 1px solid rgba(255, 0, 255, 0.3);
       color: var(--color-accent);
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
       font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
     }
 
     .case-content h3 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--color-text-light);
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
     }
 
     .case-content p {
       color: var(--color-text-muted);
-      margin-bottom: 1.5rem;
-      text-align: justify;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
 
     .case-metrics {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     .metric {
+      background: rgba(0, 255, 170, 0.05);
+      border: 1px solid rgba(0, 255, 170, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
       text-align: center;
+      transition: var(--transition);
+    }
+
+    .metric:hover {
+      background: rgba(0, 255, 170, 0.1);
+      border-color: rgba(0, 255, 170, 0.3);
+      transform: translateY(-5px);
     }
 
     .metric-value {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--color-primary);
       font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.5rem;
     }
 
     .metric-label {
       font-size: 0.9rem;
       color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .case-image {
       position: relative;
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
       box-shadow: var(--shadow-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .case-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-gradient-primary);
+      opacity: 0.1;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .case-image:hover::before {
+      opacity: 0.2;
     }
 
     .case-image img {
       width: 100%;
-      height: 300px;
+      height: 350px;
       object-fit: cover;
       transition: var(--transition);
     }
@@ -444,16 +579,20 @@
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 5rem;
       align-items: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     .about-text {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       line-height: 1.8;
       color: var(--color-text-muted);
-      text-align: justify;
+    }
+
+    .about-text strong {
+      color: var(--color-primary);
+      font-weight: 600;
     }
 
     .about-stats {
@@ -464,97 +603,190 @@
 
     .stat-card {
       background: var(--color-bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
       text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 255, 170, 0.05) 0%, transparent 70%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 255, 170, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .stat-number {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--color-primary);
       font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.5rem;
     }
 
     .stat-label {
       color: var(--color-text-muted);
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     /* Contact Section */
     .contact-container {
       background: var(--color-bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 4rem;
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(0, 255, 170, 0.05) 0%, transparent 70%);
     }
 
     /* Footer */
     footer {
-      background: var(--color-bg-light);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 3rem 2rem 2rem;
+      background: var(--color-bg-elevated);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 2rem;
       text-align: center;
       color: var(--color-text-muted);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--color-gradient-primary);
+      opacity: 0.3;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--color-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .nav-container {
-        padding: 1rem;
+        padding: 1rem 2rem;
       }
-      
+
       .nav-links {
-        gap: 1.5rem;
+        gap: 2rem;
       }
-      
-      .hero {
-        padding: 1rem;
-      }
-      
-      .hero-subtitle {
-        text-align: center;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-      }
-      
-      section {
-        padding: 4rem 1rem;
-      }
-      
+
       .services-grid {
         grid-template-columns: 1fr;
       }
-      
-      .case-item {
+
+      .case-item,
+      .about-content {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 3rem;
       }
-      
+
       .case-item:nth-child(even) {
         direction: ltr;
       }
-      
-      .about-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+
+      .case-metrics {
+        grid-template-columns: repeat(3, 1fr);
       }
-      
-      .contact-container {
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
         padding: 2rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(0, 255, 170, 0.2);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.25rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .case-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-container {
+        padding: 2.5rem 1.5rem;
       }
     }
 
@@ -562,7 +794,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -573,22 +805,30 @@
     .animate-on-scroll {
       animation: fadeInUp 0.8s ease-out;
     }
+
+    /* Loading State for Logo */
+    .logo-image.loading {
+      opacity: 0.5;
+    }
   </style>
 </head>
 <body>
 
-  <nav>
+  <nav id="mainNav">
     <div class="nav-container">
       <div class="logo-container">
-        <div class="logo-placeholder">K</div>
-        <div class="logo-text">Sanjo AI</div>
+        <img src="erenia_logo.png" alt="ERENIA Logo" class="logo-image" onerror="this.style.display='none'">
+        <div class="logo-text">ERENIA</div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#casos">Casos de Éxito</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" onclick="closeMobileMenu()">Inicio</a></li>
+        <li><a href="#servicios" onclick="closeMobileMenu()">Servicios</a></li>
+        <li><a href="#casos" onclick="closeMobileMenu()">Casos de Éxito</a></li>
+        <li><a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a></li>
+        <li><a href="#contacto" onclick="closeMobileMenu()">Contacto</a></li>
       </ul>
     </div>
   </nav>
@@ -596,19 +836,20 @@
   <section id="inicio" class="hero">
     <div class="hero-content">
       <div class="hero-badge">
-        <i class="fas fa-robot"></i> AI Engineering & Consulting Excellence
+        <i class="fas fa-brain"></i> Next-Gen AI Engineering Lab
       </div>
-      <h1>Arquitectura de IA<br>para Empresas Visionarias</h1>
+      <h1>Arquitectura de IA<br>para el Futuro</h1>
       <p class="hero-subtitle">
-        Diseñamos y desarrollamos soluciones de inteligencia artificial enterprise-grade 
-        que transforman procesos, optimizan operaciones y generan ventajas competitivas sostenibles.
+        Diseñamos ecosistemas de inteligencia artificial de última generación que transforman 
+        industrias completas. Desde neural networks hasta sistemas cognitivos distribuidos, 
+        construimos la infraestructura inteligente que define el 2026.
       </p>
       <div class="cta-buttons">
         <a href="#contacto" class="btn btn-primary">
           <i class="fas fa-rocket"></i> Iniciar Proyecto
         </a>
         <a href="#casos" class="btn btn-secondary">
-          <i class="fas fa-play"></i> Ver Casos de Éxito
+          <i class="fas fa-chart-line"></i> Ver Portfolio
         </a>
       </div>
     </div>
@@ -617,12 +858,12 @@
   <section id="servicios">
     <div class="section-header">
       <div class="section-badge">
-        <i class="fas fa-cogs"></i> Servicios Especializados
+        <i class="fas fa-microchip"></i> Servicios Core
       </div>
-      <h2 class="section-title">Ingeniería de IA End-to-End</h2>
+      <h2 class="section-title">Ingeniería de IA 360°</h2>
       <p class="section-subtitle">
-        Desde la concepción hasta la implementación en producción, 
-        ofrecemos servicios de consultoría e ingeniería de clase mundial.
+        Stack tecnológico completo para empresas que buscan liderar 
+        la transformación digital con inteligencia artificial de vanguardia.
       </p>
     </div>
     
@@ -632,39 +873,47 @@
           <i class="fas fa-eye"></i>
         </div>
         <h3>Computer Vision Engineering</h3>
-        <p>Desarrollamos sistemas de visión artificial de alto rendimiento para análisis de imágenes y video en tiempo real. Detección de objetos, reconocimiento facial, análisis de comportamiento y sistemas de monitoreo inteligente con arquitecturas optimizadas para edge computing.</p>
+        <p>Arquitecturas de visión artificial de última generación con modelos transformer y difusión. Detección multimodal, reconocimiento facial 3D, análisis de comportamiento predictivo y sistemas de vigilancia inteligente deployados en edge computing con inferencia sub-20ms.</p>
       </div>
       
       <div class="service-card">
         <div class="service-icon">
-          <i class="fas fa-brain"></i>
+          <i class="fas fa-network-wired"></i>
         </div>
-        <h3>Machine Learning Operations (MLOps)</h3>
-        <p>Diseño e implementación de pipelines de ML escalables, desde prototipado hasta producción. Incluye feature engineering, model training, deployment automatizado, monitoring y continuous integration para modelos predictivos enterprise-grade.</p>
+        <h3>Neural Architecture Design</h3>
+        <p>Diseño custom de arquitecturas neuronales optimizadas para casos de uso específicos. Desde transformers especializados hasta GANs avanzados, implementamos modelos de foundation models fine-tuned con técnicas de pruning, quantization y knowledge distillation.</p>
       </div>
       
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <h3>MLOps & AI Infrastructure</h3>
+        <p>Pipelines end-to-end automatizados con CI/CD para modelos de ML. Feature stores distribuidos, model registries, A/B testing en producción, drift detection y auto-retraining. Infraestructura cloud-agnostic con Kubernetes, Ray y MLflow enterprise.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-sitemap"></i>
+        </div>
+        <h3>LLM Engineering & RAG Systems</h3>
+        <p>Implementación de Large Language Models custom con fine-tuning, prompt engineering avanzado y sistemas RAG (Retrieval-Augmented Generation). Vector databases, embeddings optimization y agentic workflows para aplicaciones enterprise de procesamiento de lenguaje natural.</p>
+      </div>
+
       <div class="service-card">
         <div class="service-icon">
           <i class="fas fa-database"></i>
         </div>
-        <h3>Data Engineering & Analytics</h3>
-        <p>Arquitectura de datos moderna con pipelines robustos para ingesta, transformación y análisis. Implementamos data lakes, warehouses y real-time streaming con tecnologías cloud-native y on-premise según requerimientos de compliance.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3>Intelligent Process Automation</h3>
-        <p>Integración de IA con RPA para automatización cognitiva avanzada. Combinamos natural language processing, document AI y decision engines para crear workflows inteligentes que manejan procesos complejos de negocio.</p>
+        <h3>Real-Time Data Platforms</h3>
+        <p>Arquitectura de datos moderna con streaming pipelines, data lakes distribuidos y feature engineering automatizado. Implementamos Kafka, Spark, Flink y ClickHouse para procesamiento en tiempo real de petabytes de datos con latencia ultra-baja.</p>
       </div>
 
       <div class="service-card">
-        <div class="service-icon" style="background: var(--color-gradient-4);">
-          <i class="fas fa-tags"></i>
+        <div class="service-icon">
+          <i class="fas fa-tag"></i>
         </div>
-        <h3>Data Annotation & Preprocessing</h3>
-        <p>Servicios especializados de etiquetado y preprocesamiento de datos para entrenamiento de modelos de machine learning, computer vision y transformers. Incluye annotation workflows, quality assurance, data augmentation, feature engineering y pipeline optimization para datasets de alta calidad que maximizan el rendimiento de modelos de IA.</p>
+        <h3>AI Data Engineering</h3>
+        <p>Servicios especializados de annotation workflows, synthetic data generation y data augmentation pipelines. Quality assurance automatizado, active learning loops y dataset versioning para entrenamiento de modelos foundation. CVAT, Label Studio y plataformas custom.</p>
       </div>
     </div>
   </section>
@@ -672,99 +921,103 @@
   <section id="casos">
     <div class="section-header">
       <div class="section-badge">
-        <i class="fas fa-trophy"></i> Portfolio de Proyectos
+        <i class="fas fa-trophy"></i> Portfolio
       </div>
-      <h2 class="section-title">Casos de Éxito Implementados</h2>
+      <h2 class="section-title">Casos de Implementación</h2>
       <p class="section-subtitle">
-        Proyectos reales con impacto medible en organizaciones de diferentes sectores.
+        Proyectos de IA en producción con impacto medible y escalabilidad probada 
+        en entornos enterprise de alta demanda.
       </p>
     </div>
 
     <div class="cases-container">
       <div class="case-item">
         <div class="case-content">
-          <div class="case-tech-badge">Deep Learning • OpenCV • TensorFlow</div>
-          <h3>Identiface AI: Sistema de Reconocimiento Facial Empresarial</h3>
+          <div class="case-tech-badge">Vision Transformers • FaceNet • Anti-Spoofing</div>
+          <h3>Identiface AI: Biometric Intelligence Platform</h3>
           <p>
-            Implementación de arquitectura de deep learning para reconocimiento facial en tiempo real 
-            con capacidades de identificación biométrica, anti-spoofing y análisis de emociones. 
-            Sistema deployado en edge devices con latencia sub-50ms y precisión >99.5%.
+            Sistema de reconocimiento facial enterprise basado en Vision Transformers con capacidades 
+            de liveness detection, emotion recognition y age estimation. Deployed en arquitectura 
+            edge-cloud híbrida con sincronización distribuida y procesamiento paralelo GPU/TPU 
+            para identificación en tiempo real de 10K+ rostros por segundo.
           </p>
           <div class="case-metrics">
             <div class="metric">
-              <div class="metric-value">99.7%</div>
-              <div class="metric-label">Precisión</div>
+              <div class="metric-value">99.8%</div>
+              <div class="metric-label">Accuracy</div>
             </div>
             <div class="metric">
-              <div class="metric-value">35ms</div>
+              <div class="metric-value">18ms</div>
               <div class="metric-label">Latencia</div>
             </div>
             <div class="metric">
-              <div class="metric-value">10K+</div>
-              <div class="metric-label">IDs/seg</div>
+              <div class="metric-value">15K+</div>
+              <div class="metric-label">IDs/Seg</div>
             </div>
           </div>
         </div>
         <div class="case-image">
-          <img src="img/reconocimiento_facial.jpg" alt="Sistema de Reconocimiento Facial" />
+          <img src="img/reconocimiento_facial.jpg" alt="Biometric Intelligence Platform" />
         </div>
       </div>
 
       <div class="case-item">
         <div class="case-content">
-          <div class="case-tech-badge">YOLO • Computer Vision • IoT Integration</div>
-          <h3>ParkGuard: Smart Parking Management Platform</h3>
+          <div class="case-tech-badge">YOLOv8 • DeepSORT • Spatial Analytics</div>
+          <h3>ParkGuard: Intelligent Mobility Platform</h3>
           <p>
-            Solución de visión por computador para gestión inteligente de estacionamientos. 
-            Detección y tracking de vehículos, análisis de patrones de ocupación, predicción de demanda 
-            y optimización de espacios urbanos mediante algoritmos de computer vision y IoT sensors.
+            Plataforma de computer vision para smart cities con detección multi-clase de vehículos, 
+            tracking persistente, predicción de ocupación con LSTM y optimización dinámica de espacios. 
+            Sistema integrado con IoT sensors, digital twins y analytics dashboard en tiempo real 
+            con capacidades de forecasting y alertas predictivas.
           </p>
           <div class="case-metrics">
             <div class="metric">
-              <div class="metric-value">95%</div>
-              <div class="metric-label">Detección</div>
+              <div class="metric-value">97%</div>
+              <div class="metric-label">Detection</div>
             </div>
             <div class="metric">
-              <div class="metric-value">24/7</div>
+              <div class="metric-value">99.9%</div>
               <div class="metric-label">Uptime</div>
             </div>
             <div class="metric">
-              <div class="metric-value">30%</div>
-              <div class="metric-label">Eficiencia</div>
+              <div class="metric-value">40%</div>
+              <div class="metric-label">Efficiency</div>
             </div>
           </div>
         </div>
         <div class="case-image">
-          <img src="img/vigilancia_estacionamiento.jpg" alt="Sistema de Parking Inteligente" />
+          <img src="img/vigilancia_estacionamiento.jpg" alt="Intelligent Mobility Platform" />
         </div>
       </div>
 
       <div class="case-item">
         <div class="case-content">
-          <div class="case-tech-badge">Object Detection • Safety AI • Real-time Alerts</div>
-          <h3>PPE Watch: Intelligent Safety Compliance System</h3>
+          <div class="case-tech-badge">Custom YOLO • Edge AI • Real-Time Inference</div>
+          <h3>PPE Watch: Safety Compliance Intelligence</h3>
           <p>
-            Sistema de IA para detección automática de equipos de protección personal en entornos industriales. 
-            Utilizando modelos customizados de object detection, el sistema identifica cascos, chalecos, 
-            guantes y otros EPP en tiempo real, generando alertas instantáneas por incumplimientos.
+            Sistema de IA para monitoreo automatizado de EPP en zonas industriales de alto riesgo. 
+            Modelo custom entrenado con 500K+ imágenes anotadas, desplegado en edge devices con 
+            Jetson Nano para inferencia local. Pipeline de alertas en tiempo real, analytics dashboard 
+            y reportes automáticos de compliance con integración ERP/SCADA.
           </p>
           <div class="case-metrics">
             <div class="metric">
-              <div class="metric-value">92%</div>
-              <div class="metric-label">Detección EPP</div>
+              <div class="metric-value">94%</div>
+              <div class="metric-label">mAP Score</div>
             </div>
             <div class="metric">
-              <div class="metric-value">85%</div>
-              <div class="metric-label">Reducción Incidentes</div>
+              <div class="metric-value">90%</div>
+              <div class="metric-label">↓ Incidentes</div>
             </div>
             <div class="metric">
-              <div class="metric-value">100ms</div>
-              <div class="metric-label">Tiempo Alerta</div>
+              <div class="metric-value">60ms</div>
+              <div class="metric-label">Alert Time</div>
             </div>
           </div>
         </div>
         <div class="case-image">
-          <img src="img/ppe_detection.jpg" alt="Sistema de Detección de EPP" />
+          <img src="img/ppe_detection.jpg" alt="Safety Compliance Intelligence" />
         </div>
       </div>
     </div>
@@ -773,50 +1026,52 @@
   <section id="nosotros">
     <div class="section-header">
       <div class="section-badge">
-        <i class="fas fa-users"></i> Nuestro Equipo
+        <i class="fas fa-rocket"></i> El Equipo
       </div>
-      <h2 class="section-title">AI Specialists & Engineers</h2>
+      <h2 class="section-title">AI Research & Engineering</h2>
       <p class="section-subtitle">
-        Equipo multidisciplinario de especialistas en IA, ingenieros de software y arquitectos de sistemas.
+        Equipo multidisciplinario de ML engineers, research scientists y AI architects 
+        con experiencia en proyectos de escala global.
       </p>
     </div>
 
     <div class="about-content">
       <div class="about-text">
         <p>
-          Sanjo AI está conformado por un equipo de <strong>AI Specialists</strong> y <strong>Software Engineers</strong> 
-          con experiencia comprobada en el diseño, desarrollo e implementación de soluciones de inteligencia artificial 
-          a escala empresarial.
+          ERENIA es un <strong>AI Engineering Lab</strong> conformado por especialistas en machine learning, 
+          computer vision, NLP y sistemas distribuidos. Nuestro equipo combina expertise académico con 
+          experiencia práctica en deployment de sistemas de IA a escala enterprise.
         </p>
         <br>
         <p>
-          Nuestro enfoque se centra en la <strong>ingeniería de sistemas robustos</strong>, aplicación de metodologías ágiles 
-          y best practices de la industria. Trabajamos con tecnologías de vanguardia, desde frameworks de deep learning 
-          hasta plataformas cloud-native, garantizando soluciones escalables, mantenibles y de alto rendimiento.
+          Trabajamos con el <strong>estado del arte en deep learning</strong>: transformers, diffusion models, 
+          reinforcement learning y neural architecture search. Desde PyTorch y TensorFlow hasta frameworks 
+          de producción como TensorRT, ONNX Runtime y Triton Inference Server.
         </p>
         <br>
         <p>
-          Creemos en la <strong>transparencia técnica</strong>, la medición de impacto y el acompañamiento integral 
-          durante todo el ciclo de vida de los proyectos de IA.
+          Nuestra metodología se basa en <strong>ingeniería de sistemas robustos</strong>, experimentación 
+          rigurosa, monitoring continuo y mejora iterativa. Creemos en la transparencia técnica, la medición 
+          de impacto real y el acompañamiento integral durante todo el lifecycle de proyectos de IA.
         </p>
       </div>
       
       <div class="about-stats">
         <div class="stat-card">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Proyectos Implementados</div>
+          <div class="stat-number">80+</div>
+          <div class="stat-label">Proyectos Deployed</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">Sectores Industriales</div>
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Industrias</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">99.8%</div>
-          <div class="stat-label">Uptime Promedio</div>
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">SLA Uptime</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">24/7</div>
-          <div class="stat-label">Soporte Técnico</div>
+          <div class="stat-label">DevOps Support</div>
         </div>
       </div>
     </div>
@@ -824,18 +1079,17 @@
 
   <section id="contacto">
     <div class="section-header">
-      <h2 class="section-title">Contáctanos</h2>
+      <h2 class="section-title">Hablemos de tu Proyecto</h2>
       <p class="section-subtitle">
-        Un agente virtual te guiará para que puedas agendar una demo, resolver dudas o solicitar una cotización.
+        Nuestro agente virtual te guiará para agendar una consultoría técnica, 
+        solicitar un assessment de viabilidad o discutir un proyecto de IA.
       </p>
     </div>
     <div class="contact-container">
-      <!-- Agente de Jotform embebido with URL parameter -->
       <script
         src='https://cdn.jotfor.ms/agent/embedjs/0196d64eea127ec4a1bc7a77821b2d18d3d2/embed.js?skipWelcome=1&maximizable=1&fullPageURL=<%= encodeURIComponent(window.location.href) %>'>
       </script>
       <script>
-        // Dynamically adjust the script src to include the current URL
         document.addEventListener('DOMContentLoaded', function() {
           const script = document.querySelector('script[src*="jotfor.ms"]');
           if (script) {
@@ -848,8 +1102,63 @@
   </section>
 
   <footer>
-    <p>© 2025 Sanjo AI. Todos los derechos reservados.</p>
+    <p>© 2026 ERENIA AI Engineering Lab. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    // Scroll effect for navbar
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.remove('active');
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-on-scroll');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .case-item, .stat-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
